@@ -78,8 +78,9 @@ public class Foothill
          }
       }
 
-      System.out.print("Best set is: ");
+      System.out.println("The target is "+ target +"\n");
       powerset.get(kBest).showSublist();
-      System.out.print(" with sum of " + powerset.get(kBest).getSum());
+      
+      System.out.print("\nwith sum of " + powerset.get(kBest).getSum());
    }
 }
