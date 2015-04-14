@@ -23,7 +23,6 @@ class Sublist implements Cloneable
       originalObjects = list;
       indices = new ArrayList<Integer>();
    }
-
    int getSum()
    {
       sum = 0;
@@ -42,7 +41,6 @@ class Sublist implements Cloneable
       Sublist newObject = (Sublist) super.clone();
       // deep copy
       newObject.indices = (ArrayList<Integer>) indices.clone();
-      System.out.println(indices.size());
       return newObject;
    }
 

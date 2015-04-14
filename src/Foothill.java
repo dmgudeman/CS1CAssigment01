@@ -8,7 +8,7 @@ public class Foothill
    {
       ArrayList<Sublist> powerset = new ArrayList<Sublist>();
       powerset.add(new Sublist(list)); // add the empty set
-
+      
       // for every item in the original list
       for (int i = 0; i < list.size(); i++)
       {
@@ -36,7 +36,8 @@ public class Foothill
    // ------- main --------------
    public static void main(String[] args) throws Exception
    {
-      int target = 72;
+      int target = 12;
+      
       ArrayList<Integer> dataSet = new ArrayList<Integer>();
       // ArrayList<Sublist> choices = new ArrayList<Sublist>();
 
@@ -50,15 +51,26 @@ public class Foothill
       dataSet.add(15);
       dataSet.add(25);
       dataSet.add(9);
-      dataSet.add(19);
+      dataSet.add(12);
       dataSet.add(29);
-
+      
+      
+      int limit = 0;
+      for (int i = 0; i < dataSet.size(); i++)
+      {
+         limit += dataSet.get(i);
+         System.out.println("The limit is :" + limit);
+      }
+      
+      boolean checkLimitList = checkLimitList(dataSet, target);
+     
+      if (checkLimitList) {
       ArrayList<Sublist> powerset = makePowerset(dataSet);
 
-      for (int i = 0; i < powerset.size(); i++)
-      {
-         // powerset.get(i).showSublist();
-      }
+//      for (int i = 0; i < powerset.size(); i++)
+//      {
+//         // powerset.get(i).showSublist();
+//      }
 
       for (int i = 0; i < powerset.size(); i++)
       {
@@ -77,10 +89,27 @@ public class Foothill
             }
          }
       }
-
       System.out.println("The target is " + target + "\n");
       powerset.get(kBest).showSublist();
 
       System.out.print("\nwith sum of " + powerset.get(kBest).getSum());
+      }
+   }
+   public static boolean checkLimitList(ArrayList<Integer> list, int target)
+         throws CloneNotSupportedException
+   {
+      int limitSum = 0;
+      
+      for (int i = 0; i < list.size(); i++)
+      {
+        limitSum += list.get(i);
+        System.out.println(limitSum);     
+      }
+      if (limitSum <= target)
+      {
+         System.out.println("The most this grouping can sum to is: " + limitSum);
+         return false;
+      }
+      return true;
    }
 }
