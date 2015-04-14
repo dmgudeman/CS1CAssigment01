@@ -38,9 +38,9 @@ public class Foothill
    {
       int target = 72;
       ArrayList<Integer> dataSet = new ArrayList<Integer>();
-    //  ArrayList<Sublist> choices = new ArrayList<Sublist>();
+      // ArrayList<Sublist> choices = new ArrayList<Sublist>();
 
-      int  max = 0, kBest = 0, masterSum;
+      int max = 0, kBest = 0, masterSum;
       boolean foundPerfect;
 
       dataSet.add(2);
@@ -78,9 +78,9 @@ public class Foothill
          }
       }
 
-      System.out.println("The target is "+ target +"\n");
+      System.out.println("The target is " + target + "\n");
       powerset.get(kBest).showSublist();
-      
+
       System.out.print("\nwith sum of " + powerset.get(kBest).getSum());
    }
 }
