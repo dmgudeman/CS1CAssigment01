@@ -6,7 +6,7 @@ import javax.swing.text.html.HTMLDocument.Iterator;
 
 public class Foothill
 {
-
+  static int GIVENSIZE;
    // ------- main --------------
    public static void main(String[] args) throws Exception
    {
@@ -26,7 +26,7 @@ public class Foothill
       dataSet.add(9);
       dataSet.add(12);
       dataSet.add(29);
-
+      GIVENSIZE = dataSet.size();
       int limit = 0;
       for (int i = 0; i < dataSet.size(); i++)
       {
@@ -90,9 +90,9 @@ public class Foothill
          ArrayList<Sublist> newPowerset = new ArrayList<Sublist>();
          ArrayList<Sublist> MAXPowerset = new ArrayList<Sublist>();
          
-         
-         
-        for (Sublist subset : powerset)
+       for (int k= 0; k < GIVENSIZE*GIVENSIZE; k++)  
+       {
+        for (int j = 0; j <= powerset.size() ; j = 0)
          {
             // copy all of the current powerset's subsets
             newPowerset.add(subset);
@@ -103,12 +103,13 @@ public class Foothill
             newSubset.addItem(i); //
             newPowerset.add(newSubset);
            
-         }
+         } //close j loop
 
          // powerset is now powerset of list.subList(0, list.indexOf(item)+1)
          powerset = newPowerset;
-      }
+      } //close k loop
       return powerset;
+      }
    }
 
    /**
