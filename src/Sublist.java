@@ -48,7 +48,7 @@ class Sublist implements Cloneable
    {
 
       indices.add(indexOfItemToAdd);
-      Sublist s = (Sublist) clone(); // maybe?
+      Sublist s = (Sublist) clone(); 
       return s;
    }
 
