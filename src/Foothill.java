@@ -2,6 +2,8 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
+import javax.swing.text.html.HTMLDocument.Iterator;
+
 public class Foothill
 {
 
@@ -29,24 +31,23 @@ public class Foothill
       for (int i = 0; i < dataSet.size(); i++)
       {
          limit += dataSet.get(i);
-         //System.out.println("The limit is :" + limit);
       }
       // for formatting and timing
       NumberFormat tidy = NumberFormat.getInstance(Locale.US);
       tidy.setMaximumFractionDigits(4);
       long startTime, stopTime;
-     
+
       checkLimitList = checkLimitList(dataSet, target);
-     
+
       startTime = System.nanoTime();
       if (checkLimitList)
-      { 
+      {
          ArrayList<Sublist> powerset = makePowerset(dataSet);
 
          for (int i = 0; i < powerset.size(); i++)
          {
             Sublist set = powerset.get(i);
-            int sum = set.getSum();
+            int sum = set.getSumm();
             if (sum == target)
             {
                kBest = i;
@@ -55,6 +56,7 @@ public class Foothill
             {
                if (sum > max && sum <= target)
                {
+               
                   max = sum;
                   kBest = i;
                }
@@ -63,7 +65,7 @@ public class Foothill
          System.out.println("The target is " + target + "\n");
          powerset.get(kBest).showSublist();
 
-         System.out.print("\nwith sum of " + powerset.get(kBest).getSum());
+         System.out.print("\nwith sum of " + powerset.get(kBest).getSumm());
       }
       stopTime = System.nanoTime();
 
@@ -79,15 +81,18 @@ public class Foothill
          throws CloneNotSupportedException
    {
       ArrayList<Sublist> powerset = new ArrayList<Sublist>();
+      
       powerset.add(new Sublist(list)); // add the empty set
-
       // for every item in the original list
       for (int i = 0; i < list.size(); i++)
       {
 
          ArrayList<Sublist> newPowerset = new ArrayList<Sublist>();
-
-         for (Sublist subset : powerset)
+         ArrayList<Sublist> MAXPowerset = new ArrayList<Sublist>();
+         
+         
+         
+        for (Sublist subset : powerset)
          {
             // copy all of the current powerset's subsets
             newPowerset.add(subset);
@@ -97,6 +102,7 @@ public class Foothill
             newSubset.getIndices().addAll(subset.getIndices());
             newSubset.addItem(i); //
             newPowerset.add(newSubset);
+           
          }
 
          // powerset is now powerset of list.subList(0, list.indexOf(item)+1)
@@ -116,7 +122,7 @@ public class Foothill
       for (int i = 0; i < list.size(); i++)
       {
          limitSum += list.get(i);
-        // System.out.println(limitSum);
+         // System.out.println(limitSum);
       }
       if (limitSum <= target)
       {
