@@ -7,13 +7,15 @@ import javax.swing.text.html.HTMLDocument.Iterator;
 public class Foothill
 {
   static int GIVENSIZE;
+  static ArrayList<Integer> dataSet;
+  static int maximum = 0;
    // ------- main --------------
    public static void main(String[] args) throws Exception
    {
       int target = 72;
       boolean checkLimitList;
 
-      ArrayList<Integer> dataSet = new ArrayList<Integer>();
+      dataSet = new ArrayList<Integer>();
 
       int max = 0, kBest = 0;
 
@@ -89,19 +91,19 @@ public class Foothill
 
          ArrayList<Sublist> newPowerset = new ArrayList<Sublist>();
          ArrayList<Sublist> MAXPowerset = new ArrayList<Sublist>();
+         Sublist topSubset = new Sublist(list);
          
+         Sublist newSubset = new Sublist(list);
        for (int k= 0; k < GIVENSIZE*GIVENSIZE; k++)  
-       {
-        for (int j = 0; j <= powerset.size() ; j = 0)
+       {       newSubset.addItem(k);
+               
+        for (int j = 0; j < GIVENSIZE; j = 0)
          {
-            // copy all of the current powerset's subsets
-            newPowerset.add(subset);
-
-            // plus the subsets appended with the current item
-            Sublist newSubset = new Sublist(list);
-            newSubset.getIndices().addAll(subset.getIndices());
-            newSubset.addItem(i); //
-            newPowerset.add(newSubset);
+               newSubset.addItem(j);     
+           if (newSubset.getSumm() > maximum) {
+              
+           }
+           
            
          } //close j loop
 
@@ -110,6 +112,7 @@ public class Foothill
       } //close k loop
       return powerset;
       }
+      return powerset;
    }
 
    /**
