@@ -7,13 +7,8 @@ class Sublist implements Cloneable
    private ArrayList<Integer> indices;
 
    public ArrayList<Integer> getIndices()
-   {
+   {  
       return indices;
-   }
-
-   public void setIndices(ArrayList<Integer> indices)
-   {
-      this.indices = indices;
    }
 
    // constructor creates an empty Sublist (no indices)
@@ -46,7 +41,6 @@ class Sublist implements Cloneable
 
    Sublist addItem(int indexOfItemToAdd) throws CloneNotSupportedException
    {
-
       indices.add(indexOfItemToAdd);
       Sublist s = (Sublist) clone(); 
       return s;
