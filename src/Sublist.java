@@ -35,16 +35,18 @@ class Sublist implements Cloneable
 
    int getSumm()
    {
-      int sum = 0;
+      if (indices.size() <= originalObjects.size()){
       for (int i = 0; i < indices.size(); i++)
       {
          sum += originalObjects.get(indices.get(i));
+      }
       }
       return sum;
    }
    
-   int getSummm(ArrayList<Integer> indices)
+   int getSummm(ArrayList<Integer>indices)
    {
+      if (indices.size() <= originalObjects.size()){
       int sum = 0;
       for (int i = 0; i < indices.size(); i++)
       {
@@ -52,7 +54,8 @@ class Sublist implements Cloneable
       }
       return sum;
    }
-
+      return sum;
+   }
    // I have done the clone() for you, since you will need clone() inside
    // addItem().
    public Object clone() throws CloneNotSupportedException
@@ -67,10 +70,16 @@ class Sublist implements Cloneable
 
    Sublist addItem(int indexOfItemToAdd) throws CloneNotSupportedException
    {  
-     
+      Sublist s = (Sublist) clone();
+      
+      System.out.println("This is the value: " +
+      this.originalObjects.get(indexOfItemToAdd).intValue());
+      
+      System.out.println("This is the index: " +
+            this.originalObjects.size());
       this.sum = getSummm(this.indices);
       indices.add(indexOfItemToAdd);
-      Sublist s = (Sublist) clone();
+      
       return s;
    }
 
