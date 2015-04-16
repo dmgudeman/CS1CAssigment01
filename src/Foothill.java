@@ -60,9 +60,10 @@ public class Foothill
    {
       for (int i = 0; i < dataSet.size(); i++)
       {
-         int sum = sublist.getSumm();
-         if (sublist.getSum() == target)
+         int sum = sublist.getSumm(sublist);
+         if (sublist.getSumm(sublist) == target)
          {
+            
             kBest = i;
             break;
          } 
@@ -70,6 +71,7 @@ public class Foothill
          {
             if (sum > max && sum <= target)
             {
+               System.out.println("THis is getSumm: " + sublist.getSumm(sublist));
                max = sum;
                kBest = i;
             }
@@ -91,33 +93,37 @@ public class Foothill
 
    
       for (int x = 0; x < GIVENSIZE * GIVENSIZE; x++)
-     
+      {
         if (x != 0)  baseIndex = (GIVENSIZE * GIVENSIZE) % x;
-         {
-         for (int j = 0; j < GIVENSIZE; j++)
-         {
-            if (j != 0) offsetIndex = (GIVENSIZE) % j;
+        {
+           for (int j = 0; j < GIVENSIZE; j++)
+           {
+             if (j != 0) offsetIndex = (GIVENSIZE) % j;
+    
+               comboIndex = baseIndex + offsetIndex;
             
-      
-      comboIndex = baseIndex + offsetIndex;
-      newSubset.addItem(comboIndex);
-      addChecker(comboIndex, newSubset);
-         }
-      }
+               addChecker(comboIndex, newSubset);
+           }
+        }
+     }
    }
-
    
    private static void addChecker(int comboIndex,
          Sublist newSubset) throws CloneNotSupportedException
    {
-      Sublist topSubset;
-      newSubset.addItem(comboIndex);
+      // Sublist topSubset;
+      
+      int newSum = newSubset.getSum() + dataSet.get(comboIndex);
 
-        if (newSubset.getSumm() > maximum
-            && newSubset.getSumm() < target)
+        if (newSum > maximum
+            && newSum< target)
+           
+         newSubset.setSum(newSum);
+        
+           
+           newSubset.addItem(comboIndex);
       {
-         maximum = newSubset.getSumm();
-         topSubset = (Sublist) newSubset.clone();
+       
 
          System.out.print("\nwith sum of " + newSubset.getSum());
       }

@@ -1,5 +1,8 @@
 import java.util.ArrayList;
 
+import javax.swing.text.html.HTMLDocument.Iterator;
+
+
 class Sublist implements Cloneable
 {
   // private int sum = 0;
@@ -7,9 +10,17 @@ class Sublist implements Cloneable
    private ArrayList<Integer> indices;
    private int sum = 0;
    
+   Iterator it = Sublist.iterator();
+   
    public ArrayList<Integer> getIndices()
    {
       return indices;
+   }
+
+   private static Iterator iterator()
+   {
+      // TODO Auto-generated method stub
+      return null;
    }
 
    public void setIndices(ArrayList<Integer> indices)
@@ -33,21 +44,20 @@ class Sublist implements Cloneable
       this.sum = sum;
    }
 
-   int getSumm()
+   int getSumm(Sublist sublist)
    {
-      if (indices.size() <= originalObjects.size()){
       for (int i = 0; i < indices.size(); i++)
       {
          sum += originalObjects.get(indices.get(i));
       }
-      }
+      
       return sum;
    }
-   
-   int getSummm(ArrayList<Integer>indices)
+  
+   int getSummm(ArrayList<Integer> indices)
    {
       if (indices.size() <= originalObjects.size()){
-      int sum = 0;
+      
       for (int i = 0; i < indices.size(); i++)
       {
          sum += originalObjects.get(indices.get(i));
@@ -70,19 +80,16 @@ class Sublist implements Cloneable
 
    Sublist addItem(int indexOfItemToAdd) throws CloneNotSupportedException
    {  
+    
+     
       Sublist s = (Sublist) clone();
-      
-      System.out.println("This is the value: " +
-      this.originalObjects.get(indexOfItemToAdd).intValue());
-      
-      System.out.println("This is the index: " +
-            this.originalObjects.size());
-      this.sum = getSummm(this.indices);
-      indices.add(indexOfItemToAdd);
-      
+      //may need to add indices;
+       s.indices.add(0, s.originalObjects.get(indexOfItemToAdd).intValue());
+     
+     
       return s;
    }
-
+   
    void showSublist()
    {
 
