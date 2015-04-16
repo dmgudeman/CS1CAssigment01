@@ -8,7 +8,7 @@ public class Foothill
    // ------- main --------------
    public static void main(String[] args) throws Exception
    {
-      int target = 72;
+      int target = 500;
       boolean checkLimitList;
 
       ArrayList<Integer> dataSet = new ArrayList<Integer>();
@@ -25,12 +25,12 @@ public class Foothill
       dataSet.add(12);
       dataSet.add(29);
 
-      int limit = 0;
-      for (int i = 0; i < dataSet.size(); i++)
-      {
-         limit += dataSet.get(i);
-         //System.out.println("The limit is :" + limit);
-      }
+//      int limit = 0;
+//      for (int i = 0; i < dataSet.size(); i++)
+//      {
+//         limit += dataSet.get(i);
+//         //System.out.println("The limit is :" + limit);
+//      }
       // for formatting and timing
       NumberFormat tidy = NumberFormat.getInstance(Locale.US);
       tidy.setMaximumFractionDigits(4);
